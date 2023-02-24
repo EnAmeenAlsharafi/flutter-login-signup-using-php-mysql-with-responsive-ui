@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:login_admin/responsive.dart';
+import 'package:login_admin/screen/admin_panel/admin_controllers/MenuController.dart';
 import 'package:provider/provider.dart';
 
-import '../../../admin_controllers/MenuController.dart';
+
 import '../../../constants.dart';
 
 
@@ -18,7 +19,7 @@ class Header extends StatelessWidget {
         if(! Responsive.isDesktop(context))
           IconButton(
             icon: const Icon(Icons.menu,color: Colors.white,),
-            onPressed: context.read<MenuController>().controlMenu, //the mobile view it not work chek this
+            onPressed: context.read<MenuControl>().controlMenu, //the mobile view it not work chek this
           ),
         if(! Responsive.isMobile(context))
           Text(

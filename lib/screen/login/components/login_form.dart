@@ -35,16 +35,15 @@ class _LoginFormState extends State<LoginForm> {
 
   Future register() async {
     var url =
-        "http://your_ip/backend_file.php"; //here add your IP Address and PHP Backend File Name
+        "http://192.168.1.101/backend_file.php"; //here add your IP Address and PHP Backend File Name
     var responce = await http.post(Uri.parse(url), body: {
       "username": user_n.text,
       "password": user_p.text,
     });
-
     var data = json.decode(responce.body);
-    if (data == "Error") {
+    if (data["error"] != null) {
       Fluttertoast.showToast(
-          msg: "This user already exit",
+          msg: data["error"],
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
@@ -60,14 +59,14 @@ class _LoginFormState extends State<LoginForm> {
           backgroundColor: Colors.teal,
           textColor: Colors.white,
           fontSize: 16.0);
-
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MainSc(),
+          builder: (context) => const MainSc(),
         ),
       );
     }
+
     user_n.clear();
     user_p.clear();
   }

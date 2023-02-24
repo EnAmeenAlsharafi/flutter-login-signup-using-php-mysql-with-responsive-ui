@@ -22,7 +22,7 @@ class MainSc extends StatelessWidget {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => MenuController(),
+            create: (context) => MenuControl(),
           ),
         ],
         child: const MainScreen(),
@@ -42,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: context.read<MenuController>().scaffoldKey,
+      key: context.read<MenuControl>().scaffoldKey,
       drawer: const SideMenu(),
       body: SafeArea(
         child: Row(
